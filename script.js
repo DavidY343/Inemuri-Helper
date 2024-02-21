@@ -117,7 +117,11 @@ if (navigator.geolocation) {
 	{
 		mymap.removeLayer(destinoMarker);
 	}
-		destinoMarker = L.marker(e.geocode.center, { icon: destinationIcon }).addTo(mymap);
+		let latlng = e.geocode.center;
+		destinoMarker = L.marker(latlng, { icon: destinationIcon }).addTo(mymap);
+
+		// Centrar el mapa en las coordenadas del lugar marcado
+		mymap.setView(latlng);
 	});
 
 	document.getElementById('centerButton').addEventListener('click', function() {

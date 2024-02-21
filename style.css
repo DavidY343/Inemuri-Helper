@@ -13,7 +13,7 @@ html, body, #map {
   left: 10px;
   z-index: 999;
   padding: 8px 12px;
-  background-color: #BA1A1A;
+  background-color: #e11d48;
   color: white;
   cursor: pointer;
   font-family: Lemonada;
@@ -42,7 +42,7 @@ html, body, #map {
 
 .dropbtn {
   padding: 8px 12px;
-  background-color: #007bff;
+  background-color: #0284c7;
   color: white;
   border: none;
   border-radius: 4px;
@@ -76,4 +76,10 @@ html, body, #map {
 
 .dropdown:hover .dropbtn {
   background-color: #0056b3;
+}
+
+#centerButton img,
+.dropbtn img {
+	width: 40px; /* Ancho deseado de la imagen */
+	height: 40px; /* Alto deseado de la imagen */
 }
