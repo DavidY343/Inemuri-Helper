@@ -16,7 +16,7 @@ La aplicación utiliza la tecnología de geolocalización para rastrear la posic
 
 1. Sonido de alarma cuando el usuario esta cerca de su destino.
 2. Boton (rojo) que al hacer click centra la pantalla en el usuario.
-3. Boton (azul) que abre un menu desplegable y eliges el sonido entre cuatro opciones.
+3. Boton (azul) que abre un menu de ajuste y eliges el sonido entre cuatro opciones y la distancia umbral que quieras.
 4. Barra de busqueda que permite buscar el destino.
 
 ## APIs usadas
@@ -35,7 +35,7 @@ La aplicación utiliza la tecnología de geolocalización para rastrear la posic
 
 ## Decisiones de diseño
 
-1. 1 Kilometro o menos es lo que se necesita para activar la alarma.
+1. De 500m y 2km es mi diseño de umbral minimo y maximo.
 2. Al abrir la pagina web, te centra en el usuario.
 3. Solo puedo exister un marcador de destino a la vez.
 3. Cuando la alarma se activa aparece un evento para desactivarla y tambien borra el marcador de destino.

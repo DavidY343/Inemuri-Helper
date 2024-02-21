@@ -22,18 +22,23 @@
 	<button id="centerButton">
 		<img src="media/userMarkerW.png" alt="Centrar">
 	</button>
-	<div id="soundButtonContainer">
-		<div class="dropdown">
-			<button class="dropbutton">
-				<img src="media/musicIcon.png" alt="Seleccionar Sonido">
-			</button>
-			<div class="dropdown-content" id="soundOptions">
-				<a>alarmaaa</a>
-				<a>battleship_alarm</a>
-				<a>freaks_alarm</a>
-				<a>citysiren_alarm</a>
-			</div>
+	<button id="settingsButton">
+		<img src="media/settingIcon.png" alt="Ajustes">
+	</button>
+	<div id="settingsMenu" class="settings-menu">
+		<h2>Configuración</h2>
+		<label for="distanceRange">Umbral de distancia:</label>
+		<input type="range" id="distanceRange" min="500" max="2000" value="1000">
+		<span id="distanceValue">1000 m</span>
+		<div class="audio-row">
+			<button id="audioButton1">Pruebalo!</button>
+			<button id="audioButton2">Freaks</button>
 		</div>
+		<div class="audio-row">
+			<button id="audioButton3">CitySiren</button>
+			<button id="audioButton4">Battleship</button>
+		</div>
+		<button id="saveButton">Guardar</button>
 	</div>
 	<script src="script.js"></script>
 </body>

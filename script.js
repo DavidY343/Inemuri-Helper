@@ -21,34 +21,49 @@ let battleship_alarm = new Audio('media/battleship-alarm.wav');
 let citysiren_alarm = new Audio('media/citysiren-alarm.wav');
 let freaks_alarm = new Audio('media/freaks-alarm.mp4');
 let audio = alarmaaa; // Establece por defecto alarmaaa
+let umbraldistancia = 1000; // Establece por defecto 1000 metros
 let alarmSounds = {
-    'alarmaaa': alarmaaa,
-    'battleship_alarm': battleship_alarm,
-    'citysiren_alarm': citysiren_alarm,
-    'freaks_alarm': freaks_alarm
+    'Pruebalo!': alarmaaa,
+    'Battleship': battleship_alarm,
+    'CitySiren': citysiren_alarm,
+    'Freaks': freaks_alarm
 };
 
-// Menu desplegable para seleccionar el sonido de la alarma
-document.addEventListener('DOMContentLoaded', function() {
-    var dropdownBtn = document.querySelector('.dropbutton');
-    var dropdownContent = document.querySelector('.dropdown-content');
+// Manejo de ajustes
+document.addEventListener('DOMContentLoaded', function () {
+    var settingsButton = document.getElementById('settingsButton');
+    var settingsMenu = document.getElementById('settingsMenu');
+    var distanceRange = document.getElementById('distanceRange');
+    var distanceValue = document.getElementById('distanceValue');
+	var saveButton = document.getElementById('saveButton');
 
-    dropdownBtn.addEventListener('click', function() {
-        dropdownContent.style.display = (dropdownContent.style.display === 'block') ? 'none' : 'block';
+    // Mostrar u ocultar el menú de ajustes al hacer clic en el botón de ajustes
+    settingsButton.addEventListener('click', function () {
+        if (settingsMenu.style.display === 'block') {
+            settingsMenu.style.display = 'none';
+        } else {
+            settingsMenu.style.display = 'block';
+        }
     });
 
-    var dropdownOptions = document.querySelectorAll('.dropdown-content a');
-    dropdownOptions.forEach(function(option) {
-        option.addEventListener('click', function() {
-            dropdownContent.style.display = 'none';
+    // Actualizar el valor de la distancia cuando se cambia el rango
+    distanceRange.addEventListener('input', function () {
+        distanceValue.textContent = distanceRange.value + ' m';
+		umbraldistancia = distanceRange.value;
+    });
+
+    // Manejar los clics en los botones de audio y cerrar menu
+    var audioButtons = document.querySelectorAll('.settings-menu button');
+    audioButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+			if (button.textContent === 'Guardar'){
+				settingsMenu.style.display = 'none';
+			}
+			else{
+            	audio = alarmSounds[this.textContent];
+			}
         });
     });
-
-	document.querySelectorAll('.dropdown-content a').forEach(function(option) {
-		option.addEventListener('click', function() {
-			audio = alarmSounds[this.textContent];
-		});
-	});
 });
 
 if (navigator.geolocation) {
@@ -93,11 +108,12 @@ if (navigator.geolocation) {
 			let distanceToDestination = mymap.distance(newLatLng, destinoMarker.getLatLng());
 			let volume = 1 - (distanceToDestination / 500);
 			// Si el usuario está a menos de 1 km metros del destino, vibra y suena una alarma
-			if (distanceToDestination < 1000)
+			if (distanceToDestination < umbraldistancia)
 			{
 				navigator.vibrate(1000);
 				audio.volume = volume;
 				audio.play();
+				settingsMenu.style.display = 'none'; // Si esta el menu abierto, lo cierra
 				// Muestra un cuadro de diálogo al usuario
 				Swal.fire({
 					title: 'Has llegado a tu destino',

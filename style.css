@@ -28,19 +28,11 @@ html, body, #map {
   background-color: #991111;
 }
 
-#soundButtonContainer {
+#settingsButton {
   position: absolute;
   top: 180px;
   left: 10px;
   z-index: 999;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropbutton {
   padding: 8px 12px;
   background-color: #0284c7;
   color: white;
@@ -51,41 +43,86 @@ html, body, #map {
   font-weight: bold;
 }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #0284c7;
-  min-width: 160px;
-  z-index: 1;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+#settingsButton:hover {
+  background-color: #8db1d6;
 }
 
-.dropdown-content a {
-  color: black;
-  padding: 8px 12px;
-  text-decoration: none;
-  display: block;
-  border-bottom: 1px solid #ddd;
-  color: white;
-}
-
-.dropdown-content a:last-child {
-  border-bottom: none;
-}
-
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.dropdown:hover .dropbtn {
-  background-color: #0056b3;
-}
-
-#centerButton img, .dropbutton img {
+#centerButton img, #settingsButton img {
 	width: 40px;
 	height: 40px;
+}
+/**/
+.settings-menu {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #212121; 
+  padding: 40px;
+  border-radius: 10px;
+  z-index: 999;
+  display: none;
+  text-align: center;
+}
+.audio-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  
+}
+.settings-menu h2 {
+  color: #ffffff;
+  font-size: 24px;
+}
+
+.settings-menu input[type="range"] {
+  width: 90%;
+  margin: 0 auto;
+  color: white;
+  padding: 12px;
+}
+
+.settings-menu label, .settings-menu select, .settings-menu input, .settings-menu span {
+  display: block;
+  margin-bottom: 20px;
+  color: #ffffff;
+  font-size: 18px;
+  text-align: center;
+}
+
+.settings-menu button {
+  display: block;
+  margin-right: 10px;
+  padding: 12px 20px;
+  background-color: #0284c7;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  min-width: 120px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#saveButton {
+  background-color: #4caf50;
+  margin-top: 40px;
+  display: block; 
+  margin: 0 auto;
+  padding: 12px 20px;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+
+}
+.audio-row button {
+  margin-right: 10px;
+}
+#saveButton:hover {
+  background-color: #388e3c;
 }
