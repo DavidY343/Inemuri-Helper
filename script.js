@@ -106,10 +106,11 @@ if (navigator.geolocation) {
 		if (destinoMarker)
 		{
 			let distanceToDestination = mymap.distance(newLatLng, destinoMarker.getLatLng());
-			let volume = 1 - (distanceToDestination / 500);
+			let volume = 1 - (distanceToDestination / umbraldistancia);
 			// Si el usuario está a menos de 1 km metros del destino, vibra y suena una alarma
 			if (distanceToDestination < umbraldistancia)
 			{
+
 				navigator.vibrate(1000);
 				audio.volume = volume;
 				audio.play();
